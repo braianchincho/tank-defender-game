@@ -13,7 +13,9 @@ const player = new Tank(Math.floor(canvas_width / 2) , canvas_height - 70);
 const bulletsController = new BulletsController();
 const enemiesController = new EnemyController(canvas_width);
 let score = 0;
+let lives = 5;
 let countCicles = 0;
+let isGameOver = false;
 function loop() {
     countCicles++;
     context.clearRect(0, 0, canvas_width, canvas_height);
@@ -22,19 +24,23 @@ function loop() {
     bulletsController.paint(context);
     enemiesController.paint(context);
     score = bulletsController.detectCollisions(enemiesController.enemyList, score);
-    writeScore();
     if (countCicles % 100 === 0) {
         countCicles++;
         enemiesController.add();
     }
-    enemiesController.deleteInactive();
+    lives = lives - enemiesController.deleteInactive();
     bulletsController.deleteInactive();
+    writeHeader();
 }
 
 function start() {
-    setInterval(() => {
+    const interval = setInterval(() => {
         if (!ispause) {
             loop();
+        }
+        if (lives <= 0) {
+            clearInterval(interval);
+            alert('Game over');
         }
     }, 1000 / 50);
 }
@@ -48,7 +54,7 @@ function pause(event) {
     context.textAlign = "center";
     context.fillText(ispause ? 'Pause': '', canvas_width/2, canvas_height/2); 
 }
-function writeScore() {
+function writeHeader() {
     let w = canvasHeader.width;
     let h = canvasHeader.height;
     contextHeader.clearRect(0, 0, w, h);
@@ -57,8 +63,8 @@ function writeScore() {
     contextHeader.font = "30px Arial";
     contextHeader.fillStyle = "black";
     contextHeader.textAlign = "center";
-    contextHeader.fillText(`Score: ${score}`, w/2, h/2); 
-    console.log(score)
+    contextHeader.fillText(`Score: ${score}`, w*0.2, h/2); 
+    contextHeader.fillText(`Lives: ${lives}`, w*0.7, h/2);    
 }
 window.addEventListener('keydown',(e) => {
     pause(e);

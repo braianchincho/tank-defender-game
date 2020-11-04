@@ -11,7 +11,6 @@ class Tank {
         context.fill();
     }
     move(keyEvent, context) {
-        console.log(keyEvent);
         if (!keyEvent || !context ) { return; }
         if (keyEvent.key === 'ArrowRight') {
             this.x += 10;
@@ -20,7 +19,6 @@ class Tank {
         }
         this.x = this.x <= 0 ? 0 : this.x;
         this.x = this.x + 50 >= context.canvas.width ? context.canvas.width -50 : this.x;
-        console.log(this.x);
     }
     shoot(keyEvent) {
         if(keyEvent.key === ' '){

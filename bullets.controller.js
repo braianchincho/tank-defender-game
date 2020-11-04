@@ -21,7 +21,7 @@ class BulletsController {
             for( let enemy of listEnemies){
                 if(bullet.isCollision(enemy)) {
                     bullet.isActive = false;
-                    enemy.isActive = false;
+                    enemy.isDestroyed = true;
                     score++;
                 }
             }

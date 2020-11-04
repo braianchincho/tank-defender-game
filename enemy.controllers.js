@@ -2,6 +2,7 @@ class EnemyController {
     constructor(width) {
         this.enemyList = [new Enemy(width)];
         this.width = width;
+        this.enemiesWiners = 0;
     }
     paint(context) {
         for(let enemy of this.enemyList) {
@@ -13,6 +14,8 @@ class EnemyController {
         this.enemyList.push(new Enemy(this.width));
     }
     deleteInactive() {
-        this.enemyList = this.enemyList.filter(e => e.isActive);
+        const outsiders = this.enemyList.filter(e => e.isOutside);
+        this.enemyList = this.enemyList.filter(e => !e.isOutside && !e.isDestroyed);
+        return outsiders.length;
     }
 }
