@@ -2,8 +2,8 @@ const canvas = document.getElementById('screenGame');
 const context = canvas.getContext('2d');
 const canvasHeader = document.getElementById('headerGame');
 const contextHeader = canvasHeader.getContext('2d');
-let canvas_width = 700;
-let canvas_height= 600;
+let canvas_width = window.innerWidth * 0.7;
+let canvas_height= window.innerHeight * 0.9;
 contextHeader.canvas.width = canvas_width;
 contextHeader.canvas.height = 50;
 console.log(context);
@@ -24,8 +24,8 @@ function loop() {
     bulletsController.paint(context);
     enemiesController.paint(context);
     score = bulletsController.detectCollisions(enemiesController.enemyList, score);
-    if (countCicles % 100 === 0) {
-        countCicles++;
+    if (countCicles % 75 === 0) {
+        countCicles = 0;
         enemiesController.add();
     }
     lives = lives - enemiesController.deleteInactive();
