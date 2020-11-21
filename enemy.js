@@ -3,7 +3,7 @@ class Enemy {
         this.width = 40;
         this.height = 40;
         this.y = -10;
-        this.x = 50 + Math.floor((Math.random() * (width - 50)));
+        this.x = 10 + Math.floor((Math.random() * (width - this.width*2)));
         this.isDestroyed = false;
         this.isOutside = false;
     }

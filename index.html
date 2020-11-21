@@ -15,8 +15,14 @@
         <div id="mobile-footer">
             <div class="d-flex justify-content-between">
                 <div>
-                    <input type="image" src="image/left-btn.png" onclick="mobileMove('ArrowLeft')"/>
-                    <input type="image" class="ml-3" src="image/right-btn.png" onclick="mobileMove('ArrowRight')"/>
+                    <!-- <button type="image" src="image/left-btn.png" onclick="mobileMove('ArrowLeft')"/> -->
+                    <button onclick="mobileMove('ArrowLeft')" class="btn-mando">
+                        <img src="image/left-btn.png">
+                    </button>
+                    <button onclick="mobileMove('ArrowRight')" class="ml-3 btn-mando">
+                        <img src="image/right-btn.png">
+                    </button>
+                    <!-- <input type="image" class="ml-3" src="image/right-btn.png" onclick="mobileMove('ArrowRight')"/> -->
                 </div>
                 <div>
                     <input type="image" class="ml-3" src="image/shoot.png" onclick="mobileMove(' ')"/>

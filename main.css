@@ -5,3 +5,8 @@ body {
 .text-center {
     text-align: center;
 }
+
+.btn-mando {
+    max-height: 65px;
+    border: 0;
+}

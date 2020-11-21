@@ -13,9 +13,9 @@ class Tank {
     move(keyEvent, context) {
         if (!keyEvent || !context ) { return; }
         if (keyEvent.key === 'ArrowRight') {
-            this.x += 10;
+            this.x += 15;
         } else if (keyEvent.key === 'ArrowLeft') {
-            this.x -= 10;
+            this.x -= 15;
         }
         this.x = this.x <= 0 ? 0 : this.x;
         this.x = this.x + 50 >= context.canvas.width ? context.canvas.width -50 : this.x;
