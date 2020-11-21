@@ -2,8 +2,10 @@ const canvas = document.getElementById('screenGame');
 const context = canvas.getContext('2d');
 const canvasHeader = document.getElementById('headerGame');
 const contextHeader = canvasHeader.getContext('2d');
-let canvas_width = window.innerWidth * 0.7;
-let canvas_height= window.innerHeight * 0.9;
+let canvas_width; 
+let canvas_height;
+setSizes();
+
 contextHeader.canvas.width = canvas_width;
 contextHeader.canvas.height = 50;
 console.log(context);
@@ -66,12 +68,31 @@ function writeHeader() {
     contextHeader.fillText(`Score: ${score}`, w*0.2, h/2); 
     contextHeader.fillText(`Lives: ${lives}`, w*0.7, h/2);    
 }
-window.addEventListener('keydown',(e) => {
-    pause(e);
-    player.move(e, context);
-    const bullet = player.shoot(e, context);
+function setSizes() {
+    if (window.innerWidth < 500) {
+        canvas_width = window.innerWidth;
+        canvas_height = window.innerHeight * 0.8;
+        // document.getElementById('mobile-footer').style.display = 'block';
+    } else {
+        canvas_width = window.innerWidth * 0.7;
+        canvas_height = window.innerHeight * 0.9;
+        document.getElementById('mobile-footer').style.display = 'none';
+    }
+}
+function mobileMove(direction) {
+    console.log(direction)
+    player.move({ key: direction }, context);
+    shoot({ key: direction });
+}
+function shoot(event) {
+    const bullet = player.shoot(event, context);
     if (bullet) {
         bulletsController.add(bullet);
     }
+}
+window.addEventListener('keydown',(e) => {
+    pause(e);
+    player.move(e, context);
+    shoot(e);
 });
 start();

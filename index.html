@@ -4,12 +4,25 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Game</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="shortcut icon" href="">
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
     <main class="text-center">
         <canvas id="headerGame"></canvas>
         <canvas id="screenGame"></canvas>
+        <div id="mobile-footer">
+            <div class="d-flex justify-content-between">
+                <div>
+                    <input type="image" src="image/left-btn.png" onclick="mobileMove('ArrowLeft')"/>
+                    <input type="image" class="ml-3" src="image/right-btn.png" onclick="mobileMove('ArrowRight')"/>
+                </div>
+                <div>
+                    <input type="image" class="ml-3" src="image/shoot.png" onclick="mobileMove(' ')"/>
+                </div>
+            </div>
+        </div>
     </main>
     <script src="stage.js"></script>
     <script src="tank.js"></script>
